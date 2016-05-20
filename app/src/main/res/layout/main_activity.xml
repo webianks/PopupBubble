@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="16dp">
+
+    <com.webianks.library.PopupBubble
+        android:id="@+id/popup_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:text="New posts"
+        app:textColor="#424242"
+        app:imageColor="#424242"
+        app:backgroundColor="#FFC107"
+        />
+
+</RelativeLayout>

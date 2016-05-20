@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="PopupBubble">
+        <attr name="text" format="string"/>
+        <attr name="textColor" format="string"/>
+        <attr name="imageColor" format="string"/>
+        <attr name="backgroundColor" format="string"/>
+        <attr name="showArrow" format="boolean"/>
+    </declare-styleable>
+
+</resources>
+
