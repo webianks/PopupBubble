@@ -2,5 +2,5 @@
 Easily Add  "New Post" popup button with the feeds of your app.
 
 #Early Preview
-<img src="http://www.webianks.com/popupbubble/1.png" align="left" height="400" width="150" >
+<img src="http://www.webianks.com/popupbubble/1.png" align="left" height="300" width="250" >
 
