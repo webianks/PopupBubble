@@ -4,9 +4,10 @@
     <declare-styleable name="PopupBubble">
         <attr name="text" format="string"/>
         <attr name="textColor" format="string"/>
-        <attr name="imageColor" format="string"/>
+        <attr name="iconColor" format="string"/>
         <attr name="backgroundColor" format="string"/>
-        <attr name="showArrow" format="boolean"/>
+        <attr name="showIcon" format="boolean"/>
+        <attr name="setIcon" format="integer"></attr>
     </declare-styleable>
 
 </resources>

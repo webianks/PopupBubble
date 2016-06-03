@@ -30,9 +30,10 @@ public class PopupBubble extends RelativeLayout {
 
     private String TEXT = "New posts";
     private String TEXT_COLOR = "#ffffff";
-    private String IMAGE_COLOR = "#ffffff";
+    private String ICON_COLOR = "#ffffff";
     private String BACKGROUND_COLOR = "#99424242";
-    private boolean SHOW_ARROW = true;
+    private boolean SHOW_ICON = true;
+    private Drawable ICON_DRAWABLE;
 
     private PopupBubbleClickListener mListener;
 
@@ -42,6 +43,7 @@ public class PopupBubble extends RelativeLayout {
 
         textView = new TextView(context);
         imageView = new ImageView(context);
+
 
         init(context);
 
@@ -60,9 +62,10 @@ public class PopupBubble extends RelativeLayout {
         try {
             TEXT = typedArray.getString(R.styleable.PopupBubble_text);
             TEXT_COLOR = typedArray.getString(R.styleable.PopupBubble_textColor);
-            IMAGE_COLOR = typedArray.getString(R.styleable.PopupBubble_imageColor);
+            ICON_COLOR = typedArray.getString(R.styleable.PopupBubble_iconColor);
             BACKGROUND_COLOR = typedArray.getString(R.styleable.PopupBubble_backgroundColor);
-            SHOW_ARROW = typedArray.getBoolean(R.styleable.PopupBubble_showArrow, true);
+            SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_showIcon, true);
+            ICON_DRAWABLE = typedArray.getDrawable(R.styleable.PopupBubble_setIcon);
 
             init(context);
 
@@ -85,9 +88,11 @@ public class PopupBubble extends RelativeLayout {
         try {
             TEXT = typedArray.getString(R.styleable.PopupBubble_text);
             TEXT_COLOR = typedArray.getString(R.styleable.PopupBubble_textColor);
-            IMAGE_COLOR = typedArray.getString(R.styleable.PopupBubble_imageColor);
+            ICON_COLOR = typedArray.getString(R.styleable.PopupBubble_iconColor);
             BACKGROUND_COLOR = typedArray.getString(R.styleable.PopupBubble_backgroundColor);
-            SHOW_ARROW = typedArray.getBoolean(R.styleable.PopupBubble_showArrow, true);
+            SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_showIcon, true);
+            ICON_DRAWABLE = typedArray.getDrawable(R.styleable.PopupBubble_setIcon);
+
             init(context);
         } finally {
             typedArray.recycle();
@@ -101,7 +106,7 @@ public class PopupBubble extends RelativeLayout {
         //prepare background of the bubble
         setRoundedBackground(context);
         //set the icon
-        if (SHOW_ARROW)
+        if (SHOW_ICON)
             addIcon();
         //set the text
         addText();
@@ -131,10 +136,16 @@ public class PopupBubble extends RelativeLayout {
     private void addIcon() {
 
         imageView.setId(R.id.image_view);
-        imageView.setImageResource(R.drawable.ic_arrow_upward_white_18dp);
+
+        if(ICON_DRAWABLE!=null)
+              imageView.setImageDrawable(ICON_DRAWABLE);
+        else
+              imageView.setImageResource(R.drawable.ic_arrow_upward_white_18dp);
+
+
         imageView.setPadding(35, 20, 15, 25);
 
-        imageView.setColorFilter(Color.parseColor(IMAGE_COLOR), PorterDuff.Mode.SRC_ATOP);
+        imageView.setColorFilter(Color.parseColor(ICON_COLOR), PorterDuff.Mode.SRC_ATOP);
 
         this.addView(imageView);
 
@@ -143,7 +154,7 @@ public class PopupBubble extends RelativeLayout {
     private void addText() {
 
         textView.setText(TEXT);
-        if (SHOW_ARROW)
+        if (SHOW_ICON)
             textView.setPadding(00, 20, 35, 25);
         else
             textView.setPadding(35, 20, 35, 25);
