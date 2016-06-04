@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
 
+        layoutManager.setSmoothScrollbarEnabled(true);
         recyclerView.setLayoutManager(layoutManager);
 
         setContent();
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void bubbleClicked(Context context) {
 
-
+                //if smooth scrolling is needed
                 recyclerView.smoothScrollToPosition(0);
 
             }
@@ -61,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addNewContent() {
-
 
 
         final Handler handler = new Handler();
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         DataClass dataClass;
 
-        for (int i=0;i<20;i++){
+        for (int i=0;i<50;i++){
 
             dataClass = new DataClass();
             dataClass.setName("Cool Name "+(i+1));

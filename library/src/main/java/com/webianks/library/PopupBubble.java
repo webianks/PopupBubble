@@ -11,10 +11,8 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -216,13 +214,13 @@ public class PopupBubble extends RelativeLayout {
             if (mListener != null) {
 
                 mListener.bubbleClicked(getContext());
-                doResizeAnimation();
 
+                doResizeAnimation();
             }
 
         }
         invalidate();
-        return super.onTouchEvent(event);
+        return true;
     }
 
     private void doResizeAnimation() {
@@ -230,9 +228,7 @@ public class PopupBubble extends RelativeLayout {
         Animations.ResizeAnimation resizeAnimation = new Animations.ResizeAnimation(this,100,100,0,0);
         startAnimation(resizeAnimation);
 
-
     }
-
 
     //onBubbleClick Setter and the interface
     public void setPopupBubbleListener(PopupBubbleClickListener listener) {
@@ -242,7 +238,6 @@ public class PopupBubble extends RelativeLayout {
     public interface PopupBubbleClickListener {
         void bubbleClicked(Context context);
     }
-
 
     //helper methods that can be accessed through the object
     public void hide() { this.setVisibility(View.GONE); }
