@@ -2,6 +2,7 @@ package com.webianks.library;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 /**
  * Created by R Ankit on 04-06-2016.
@@ -26,30 +27,22 @@ public class RecyclerViewListener extends RecyclerView.OnScrollListener {
             // Scrolling up
 
                 if (popupBubble != null)
-                    popupBubble.show();
-                System.out.println("Scrolling up");
+                    popupBubble.setVisibility(View.VISIBLE);
 
         } else {
             // Scrolling down
 
                 if (popupBubble != null)
-                popupBubble.hide();
-            System.out.println("Scrolling down");
+                   popupBubble.setVisibility(View.INVISIBLE);
 
             if(isTopVisible(recyclerView))
             {
                 popupBubble.deactivate();
-
             }
-
-
         }
     }
 
     private boolean isTopVisible(RecyclerView recyclerView) {
-
-
-        //System.out.println("Item visible "+((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstVisibleItemPosition());
 
         if (((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstVisibleItemPosition()==0)
             return true;

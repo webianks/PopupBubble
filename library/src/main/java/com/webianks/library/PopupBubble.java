@@ -12,21 +12,17 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by R Ankit on 20-05-2016.
  */
 
-public class PopupBubble extends RelativeLayout{
+public class PopupBubble extends RelativeLayout {
 
     private TextView textView;
     private ImageView imageView;
@@ -142,10 +138,10 @@ public class PopupBubble extends RelativeLayout{
 
         imageView.setId(R.id.image_view);
 
-        if(ICON_DRAWABLE!=null)
-              imageView.setImageDrawable(ICON_DRAWABLE);
+        if (ICON_DRAWABLE != null)
+            imageView.setImageDrawable(ICON_DRAWABLE);
         else
-              imageView.setImageResource(R.drawable.ic_arrow_upward_white_18dp);
+            imageView.setImageResource(R.drawable.ic_arrow_upward_white_18dp);
 
 
         imageView.setPadding(35, 20, 15, 25);
@@ -222,10 +218,11 @@ public class PopupBubble extends RelativeLayout{
 
                 mListener.bubbleClicked(getContext());
 
-                if(recyclerView!=null)
-                      recyclerView.smoothScrollToPosition(0);
-                doResizeAnimation();
-                deactivate();
+                if (recyclerView != null)
+                    recyclerView.smoothScrollToPosition(0);
+                ShowHideAnimation showHideAnimation=new ShowHideAnimation();
+                showHideAnimation.animateOut(this);
+                //deactivate();
 
             }
 
@@ -234,12 +231,6 @@ public class PopupBubble extends RelativeLayout{
         return true;
     }
 
-    private void doResizeAnimation() {
-
-        Animations.ResizeAnimation resizeAnimation = new Animations.ResizeAnimation(this,100,100,0,0);
-        startAnimation(resizeAnimation);
-
-    }
 
     public void setRecyclerView(android.support.v7.widget.RecyclerView recyclerView) {
 
@@ -259,14 +250,18 @@ public class PopupBubble extends RelativeLayout{
 
 
     //helper methods that can be accessed through the object
-    public void hide() { this.setVisibility(View.INVISIBLE); }
-    public void show() {
-        this.setVisibility(View.VISIBLE);
-        //Animation expandIn = AnimationUtils.loadAnimation(context, R.anim.pop_in);
-        //this.startAnimation(expandIn);
+    public void hide() {
+        this.setVisibility(View.INVISIBLE);
     }
 
-    public void activate(){
+    public void show() {
+
+        ShowHideAnimation showHideAnimation = new ShowHideAnimation();
+        showHideAnimation.animateIn(this);
+
+    }
+
+    public void activate() {
 
         this.show();
         this.recyclerView.addOnScrollListener(new RecyclerViewListener(this));
@@ -275,7 +270,7 @@ public class PopupBubble extends RelativeLayout{
 
     //to detach the popub bubble when it has clicked or user manually scrolls to top
 
-    public void deactivate(){
+    public void deactivate() {
 
         this.removeAllViews();
         this.recyclerView.removeOnScrollListener(null);
