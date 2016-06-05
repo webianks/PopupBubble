@@ -48,16 +48,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void bubbleClicked(Context context) {
 
-                //if smooth scrolling is needed
-                recyclerView.smoothScrollToPosition(0);
-
             }
         });
 
+
+        //necessary to add
+        popupBubble.setRecyclerView(recyclerView);
         popupBubble.hide();
 
         addNewContent();
-
 
     }
 
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     list.add(0,dataClass);
                 }
                 contentAdapter.notifyItemRangeInserted(0,10);
-                popupBubble.show();
+                popupBubble.activate();
 
             }
         }, 3000);

@@ -10,21 +10,27 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by R Ankit on 20-05-2016.
  */
 
-public class PopupBubble extends RelativeLayout {
+public class PopupBubble extends RelativeLayout{
 
     private TextView textView;
     private ImageView imageView;
+    private RecyclerView recyclerView;
 
     private String TEXT = "New posts";
     private String TEXT_COLOR = "#ffffff";
@@ -34,14 +40,15 @@ public class PopupBubble extends RelativeLayout {
     private Drawable ICON_DRAWABLE;
 
     private PopupBubbleClickListener mListener;
+    private Context context;
 
     //Java Inflation
     public PopupBubble(Context context) {
         super(context);
 
+        this.context = context;
         textView = new TextView(context);
         imageView = new ImageView(context);
-
 
         init(context);
 
@@ -215,7 +222,11 @@ public class PopupBubble extends RelativeLayout {
 
                 mListener.bubbleClicked(getContext());
 
+                if(recyclerView!=null)
+                      recyclerView.smoothScrollToPosition(0);
                 doResizeAnimation();
+                deactivate();
+
             }
 
         }
@@ -230,20 +241,44 @@ public class PopupBubble extends RelativeLayout {
 
     }
 
+    public void setRecyclerView(android.support.v7.widget.RecyclerView recyclerView) {
+
+        this.recyclerView = recyclerView;
+
+    }
+
     //onBubbleClick Setter and the interface
     public void setPopupBubbleListener(PopupBubbleClickListener listener) {
         mListener = listener;
     }
 
+
     public interface PopupBubbleClickListener {
         void bubbleClicked(Context context);
     }
 
+
     //helper methods that can be accessed through the object
-    public void hide() { this.setVisibility(View.GONE); }
+    public void hide() { this.setVisibility(View.INVISIBLE); }
     public void show() {
         this.setVisibility(View.VISIBLE);
+        //Animation expandIn = AnimationUtils.loadAnimation(context, R.anim.pop_in);
+        //this.startAnimation(expandIn);
     }
 
+    public void activate(){
+
+        this.show();
+        this.recyclerView.addOnScrollListener(new RecyclerViewListener(this));
+    }
+
+
+    //to detach the popub bubble when it has clicked or user manually scrolls to top
+
+    public void deactivate(){
+
+        this.removeAllViews();
+        this.recyclerView.removeOnScrollListener(null);
+    }
 
 }
