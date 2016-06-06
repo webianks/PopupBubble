@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         app:backgroundColor="?attr/colorPrimary"
         app:iconColor="#ffffff"
-        app:text="New stuff"
+        app:text="New Stories"
         app:textColor="#ffffff" />
 
 </RelativeLayout>

@@ -235,6 +235,7 @@ public class PopupBubble extends RelativeLayout {
     public void setRecyclerView(android.support.v7.widget.RecyclerView recyclerView) {
 
         this.recyclerView = recyclerView;
+        this.hide();
 
     }
 
