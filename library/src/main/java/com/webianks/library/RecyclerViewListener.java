@@ -44,7 +44,7 @@ public class RecyclerViewListener extends RecyclerView.OnScrollListener {
 
     private boolean isTopVisible(RecyclerView recyclerView) {
 
-        if (recyclerView.getChildAt(0).getTop()==0)
+        if (((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstVisibleItemPosition()==0)
             return true;
         else
             return false;

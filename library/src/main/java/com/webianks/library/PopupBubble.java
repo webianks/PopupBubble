@@ -31,7 +31,7 @@ public class PopupBubble extends RelativeLayout {
     private String TEXT = "New posts";
     private String TEXT_COLOR = "#ffffff";
     private String ICON_COLOR = "#ffffff";
-    private String BACKGROUND_COLOR = "#99424242";
+    private String BACKGROUND_COLOR = "#dd424242";
     private boolean SHOW_ICON = true;
     private Drawable ICON_DRAWABLE;
 
@@ -61,12 +61,25 @@ public class PopupBubble extends RelativeLayout {
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PopupBubble, 0, 0);
 
         try {
-            TEXT = typedArray.getString(R.styleable.PopupBubble_text);
-            TEXT_COLOR = typedArray.getString(R.styleable.PopupBubble_textColor);
-            ICON_COLOR = typedArray.getString(R.styleable.PopupBubble_iconColor);
-            BACKGROUND_COLOR = typedArray.getString(R.styleable.PopupBubble_backgroundColor);
+
+            String text = typedArray.getString(R.styleable.PopupBubble_text);
+            String text_color = typedArray.getString(R.styleable.PopupBubble_textColor);
+            String icon_color = typedArray.getString(R.styleable.PopupBubble_iconColor);
+            String background_color = typedArray.getString(R.styleable.PopupBubble_backgroundColor);
+            Drawable icon_drawable = typedArray.getDrawable(R.styleable.PopupBubble_setIcon);
+
+            if (text!=null)
+                TEXT = text;
+            if (text_color!=null)
+                TEXT_COLOR = text_color;
+            if (icon_color!=null)
+                ICON_COLOR = icon_color;
+            if (background_color!=null)
+                BACKGROUND_COLOR = background_color;
+            if (icon_drawable!=null)
+                ICON_DRAWABLE = icon_drawable;
+
             SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_showIcon, true);
-            ICON_DRAWABLE = typedArray.getDrawable(R.styleable.PopupBubble_setIcon);
 
             init(context);
 
@@ -87,14 +100,26 @@ public class PopupBubble extends RelativeLayout {
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PopupBubble, 0, 0);
 
         try {
-            TEXT = typedArray.getString(R.styleable.PopupBubble_text);
-            TEXT_COLOR = typedArray.getString(R.styleable.PopupBubble_textColor);
-            ICON_COLOR = typedArray.getString(R.styleable.PopupBubble_iconColor);
-            BACKGROUND_COLOR = typedArray.getString(R.styleable.PopupBubble_backgroundColor);
-            SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_showIcon, true);
-            ICON_DRAWABLE = typedArray.getDrawable(R.styleable.PopupBubble_setIcon);
 
-            init(context);
+            String text = typedArray.getString(R.styleable.PopupBubble_text);
+            String text_color = typedArray.getString(R.styleable.PopupBubble_textColor);
+            String icon_color = typedArray.getString(R.styleable.PopupBubble_iconColor);
+            String background_color = typedArray.getString(R.styleable.PopupBubble_backgroundColor);
+            Drawable icon_drawable = typedArray.getDrawable(R.styleable.PopupBubble_setIcon);
+
+            if (text!=null)
+                TEXT = text;
+            if (text_color!=null)
+                TEXT_COLOR = text_color;
+            if (icon_color!=null)
+                ICON_COLOR = icon_color;
+            if (background_color!=null)
+                BACKGROUND_COLOR = background_color;
+            if (icon_drawable!=null)
+                ICON_DRAWABLE = icon_drawable;
+
+            SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_showIcon, true);
+
         } finally {
             typedArray.recycle();
         }
@@ -112,10 +137,8 @@ public class PopupBubble extends RelativeLayout {
         //set the text
         addText();
 
-
         //move the whole layout in the center of the screen
         moveToCenter();
-
 
         //invalidate and redraw the views.
         invalidate();
@@ -189,10 +212,10 @@ public class PopupBubble extends RelativeLayout {
             @Override
             public Shader resize(int width, int height) {
                 LinearGradient lg = new LinearGradient(0, 0, 0, height,
-                        new int[]{Color.parseColor("#E0E0E0"),
-                                Color.parseColor("#E0E0E0"),
-                                Color.parseColor("#E0E0E0"),
-                                Color.parseColor("#E0E0E0")}, new float[]{0,
+                        new int[]{Color.parseColor("#dddddd"),
+                                Color.parseColor("#dddddd"),
+                                Color.parseColor("#dddddd"),
+                                Color.parseColor("#dddddd")}, new float[]{0,
                         0.50f, 0.50f, 1}, Shader.TileMode.REPEAT);
                 return lg;
             }
