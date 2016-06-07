@@ -37,6 +37,7 @@ public class PopupBubble extends RelativeLayout {
 
     private PopupBubbleClickListener mListener;
     private Context context;
+    private boolean animation = true;
 
     //Java Inflation
     public PopupBubble(Context context) {
@@ -241,10 +242,24 @@ public class PopupBubble extends RelativeLayout {
 
                 mListener.bubbleClicked(getContext());
 
-                if (recyclerView != null)
-                    recyclerView.smoothScrollToPosition(0);
-                ShowHideAnimation showHideAnimation=new ShowHideAnimation();
-                showHideAnimation.animateOut(this);
+
+
+                if(animation){
+
+                    if (recyclerView != null)
+                        recyclerView.smoothScrollToPosition(0);
+
+                    ShowHideAnimation showHideAnimation=new ShowHideAnimation();
+                    showHideAnimation.animateOut(this);
+                }else{
+
+                    this.removeAllViews();
+                    if (recyclerView != null){
+                        recyclerView.removeAllViews();
+                    }
+
+                }
+
                 //deactivate();
 
             }
@@ -280,8 +295,13 @@ public class PopupBubble extends RelativeLayout {
 
     public void show() {
 
-        ShowHideAnimation showHideAnimation = new ShowHideAnimation();
-        showHideAnimation.animateIn(this);
+
+       if(animation) {
+           ShowHideAnimation showHideAnimation = new ShowHideAnimation();
+           showHideAnimation.animateIn(this);
+       }else{
+           this.setVisibility(VISIBLE);
+       }
 
     }
 
@@ -298,6 +318,10 @@ public class PopupBubble extends RelativeLayout {
 
         this.removeAllViews();
         this.recyclerView.removeOnScrollListener(null);
+    }
+
+    public void withAnimation(boolean animation){
+        this.animation = animation;
     }
 
 }

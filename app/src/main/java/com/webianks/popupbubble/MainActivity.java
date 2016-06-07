@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         //necessary to add
         popupBubble.setRecyclerView(recyclerView);
+        //popupBubble.withAnimation(false);
 
         addNewContent();
 
