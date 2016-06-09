@@ -18,11 +18,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-    private List<DataClass> list = new ArrayList<DataClass>();
+    private List<DataClass> list = new ArrayList<>();
     private RecyclerView recyclerView;
-    PopupBubble popupBubble;
-    ContentAdapter contentAdapter;
-    LinearLayoutManager layoutManager;
+    private PopupBubble popupBubble;
+    private ContentAdapter contentAdapter;
+    private LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
 
-        layoutManager.setSmoothScrollbarEnabled(true);
         recyclerView.setLayoutManager(layoutManager);
 
         setContent();
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //XML based use of PopupBubble
 
         popupBubble = (PopupBubble) findViewById(R.id.popup_bubble);
+
         popupBubble.setPopupBubbleListener(new PopupBubble.PopupBubbleClickListener() {
 
             @Override
@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         //necessary to add
         popupBubble.setRecyclerView(recyclerView);

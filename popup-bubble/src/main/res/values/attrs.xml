@@ -7,7 +7,7 @@
         <attr name="iconColor" format="string"/>
         <attr name="backgroundColor" format="string"/>
         <attr name="showIcon" format="boolean"/>
-        <attr name="setIcon" format="integer"></attr>
+        <attr name="setIcon" format="integer"/>
     </declare-styleable>
 
 </resources>
