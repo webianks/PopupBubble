@@ -41,9 +41,20 @@ If its inside RelativeLayout then
         />
 ```
 #Customization
+Through XML
 ```xml
 <!--Change background Color-->
     app:backgroundColor="?attr/colorPrimary"
-
+<!--Change text -->
+    app:text="New Stories"
+<!--Change text color-->
+    app:textColor="#ffffff"
+<!--Show/Hide Icon inside the button. By default its true.-->
+    app:showIcon="false"
+<!--Change icon color-->
+    app:iconColor="#ffffff"
+<!--Set Different Icons-->
+    app:setIcon="@drawable/ic_new.png"
+        
 ```
 
