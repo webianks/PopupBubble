@@ -104,17 +104,13 @@ Set false if you dont want any animations. Default value is true.
 popupBubble.withAnimation(false);
 ```
 #Most Important
-Now <b>download/fetch new content</b> in background and then notify your recyclerview adapter about range of items added and finally <b>activate the PopupBubble</b> to appear with animation(if not set false).
+Now <b>download/fetch new content</b> in background and then notify your recyclerview adapter about range of items added and finally <b>activate the PopupBubble</b> to make it appear with animation (if not set false).
 ```java
-private void addNewContent() {
 
-    //Own logic for fetching new content
-         
-     .....      
-       
-    adapter.notifyItemRangeInserted(0,size_of_new_items_added); // size_of_new_items_added = 10 if 10 new items are added.
-    popupBubble.activate(); 
-        
-}
+//Own logic for fetching new content
+ .....      
+adapter.notifyItemRangeInserted(0,size_of_new_items_added); // size_of_new_items_added = 10 if 10 new items are added.
+popupBubble.activate(); 
+    
 ```
 
