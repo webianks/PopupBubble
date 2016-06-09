@@ -19,5 +19,11 @@ compile 'com.webianks.library:popup-bubble:1.0.0'
   <type>pom</type>
 </dependency>
 ```
-
-
+#Add from XML
+```xml
+  <com.webianks.library.PopupBubble
+        android:id="@+id/popup_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+```
