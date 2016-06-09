@@ -98,4 +98,9 @@ Hide/Show PopupBubble according to your need
    popupBubble.hide();
    popupBubble.show();
 ```
+**Control Animations**
+Set false if you dont want any animations. Default value is true.
+```java
+popupBubble.withAnimation(false);
+```
 
