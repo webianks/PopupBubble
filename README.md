@@ -57,4 +57,20 @@ Through XML
     app:setIcon="@drawable/ic_new.png"
         
 ```
+**Example : Full Customization**
+```xml
+<com.webianks.library.PopupBubble
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_margin="16dp"
+        android:id="@+id/popup_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:backgroundColor="?attr/colorPrimary"
+        app:iconColor="#ffffff"
+        app:text="New Stories"
+        app:textColor="#ffffff"
+        app:setIcon="@drawable/ic_keyboard_arrow_up_white_18dp"
+        />
 
+```
