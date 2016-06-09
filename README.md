@@ -87,3 +87,8 @@ popupBubble.setPopupBubbleListener(new PopupBubble.PopupBubbleClickListener() {
             }
         });
 ```
+**Attach with your RecyclerView**
+```java
+ //necessary to add
+  popupBubble.setRecyclerView(recyclerView);
+```
