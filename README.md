@@ -19,7 +19,7 @@ compile 'com.webianks.library:popup-bubble:1.0.0'
   <type>pom</type>
 </dependency>
 ```
-#Add from XML
+#Add PopupBubble to layout
 ```xml
   <com.webianks.library.PopupBubble
         android:id="@+id/popup_bubble"
@@ -40,8 +40,7 @@ If its inside RelativeLayout then
         android:layout_centerHorizontal="true"
         />
 ```
-#Customization
-Through XML
+#Customization Through XML
 ```xml
 <!--Change background Color-->
     app:backgroundColor="?attr/colorPrimary"
@@ -73,4 +72,8 @@ Through XML
         app:setIcon="@drawable/ic_keyboard_arrow_up_white_18dp"
         />
 
+```
+#Access the bubble from Java
+```java
+  PopupBubble popupBubble = (PopupBubble) findViewById(R.id.popup_bubble);
 ```
