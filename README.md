@@ -15,7 +15,7 @@ compile 'com.webianks.library:popup-bubble:1.0.1'
 <dependency>
   <groupId>com.webianks.library</groupId>
   <artifactId>popup-bubble</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
