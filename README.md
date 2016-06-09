@@ -21,24 +21,24 @@ compile 'com.webianks.library:popup-bubble:1.0.0'
 ```
 #Add PopupBubble to layout
 ```xml
-  <com.webianks.library.PopupBubble
-        android:id="@+id/popup_bubble"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+<com.webianks.library.PopupBubble
+  android:id="@+id/popup_bubble"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+/>
 ```
 Postioning of this view can be done according to the need. By default it should be placed in <b>top center</b>. Also it should be placed <b>below recyclerview</b> in layout so that it shows on top of recyclerview.
 
 #Example positioning
 If its inside RelativeLayout then
 ```xml
-  <com.webianks.library.PopupBubble
-        android:layout_margin="16dp"
-        android:id="@+id/popup_bubble"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        />
+<com.webianks.library.PopupBubble
+  android:layout_margin="16dp"
+  android:id="@+id/popup_bubble"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_centerHorizontal="true"
+/>
 ```
 #Customization Through XML
 ```xml
@@ -59,23 +59,23 @@ If its inside RelativeLayout then
 **Example : Full Customization**
 ```xml
 <com.webianks.library.PopupBubble
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_margin="16dp"
-        android:id="@+id/popup_bubble"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:backgroundColor="?attr/colorPrimary"
-        app:iconColor="#ffffff"
-        app:text="New Stories"
-        app:textColor="#ffffff"
-        app:setIcon="@drawable/ic_keyboard_arrow_up_white_18dp"
-        />
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_margin="16dp"
+  android:id="@+id/popup_bubble"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_centerHorizontal="true"
+  app:backgroundColor="?attr/colorPrimary"
+  app:iconColor="#ffffff"
+  app:text="New Stories"
+  app:textColor="#ffffff"
+  app:setIcon="@drawable/ic_keyboard_arrow_up_white_18dp"
+/>
 
 ```
 #Access the bubble from Java
 ```java
-  PopupBubble popupBubble = (PopupBubble) findViewById(R.id.popup_bubble);
+PopupBubble popupBubble = (PopupBubble) findViewById(R.id.popup_bubble);
 ```
 Add listener if you want to know when the bubble is clicked
 ```java
@@ -90,13 +90,13 @@ popupBubble.setPopupBubbleListener(new PopupBubble.PopupBubbleClickListener() {
 **Attach with your RecyclerView**
 ```java
  //necessary to add
-  popupBubble.setRecyclerView(recyclerView);
+popupBubble.setRecyclerView(recyclerView);
 ```
 #Helper Methods
 Hide/Show PopupBubble according to your need
 ```java
-   popupBubble.hide();
-   popupBubble.show();
+popupBubble.hide();
+popupBubble.show();
 ```
 **Control Animations**
 Set false if you dont want any animations. Default value is true.
@@ -106,15 +106,15 @@ popupBubble.withAnimation(false);
 #Most Important
 Now <b>download/fetch new content</b> in background and then notify your recyclerview adapter about range of items added and finally <b>activate the PopupBubble</b> to appear with animation(if not set false).
 ```java
- private void addNewContent() {
+private void addNewContent() {
 
-        //Own logic for fetching new content
+    //Own logic for fetching new content
          
-        .....      
+     .....      
        
-        adapter.notifyItemRangeInserted(0,size_of_new_items_added); // size_of_new_items_added = 10 if 10 new items are added.
-        popupBubble.activate(); 
+    adapter.notifyItemRangeInserted(0,size_of_new_items_added); // size_of_new_items_added = 10 if 10 new items are added.
+    popupBubble.activate(); 
         
-    }
+}
 ```
 
