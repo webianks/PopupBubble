@@ -77,3 +77,13 @@ If its inside RelativeLayout then
 ```java
   PopupBubble popupBubble = (PopupBubble) findViewById(R.id.popup_bubble);
 ```
+Add listener if you want to know when the bubble is clicked
+```java
+popupBubble.setPopupBubbleListener(new PopupBubble.PopupBubbleClickListener() {
+            @Override
+            public void bubbleClicked(Context context) {
+  
+                //popup_bubble is clicked  
+            }
+        });
+```
