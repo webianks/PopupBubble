@@ -10,6 +10,14 @@ Minimum sdk is 14 and Support is limited to recyclerview for now.
 ```groovy
 compile 'com.webianks.library:popup-bubble:1.0.0'
 ```
-
+**Maven:**
+```xml
+<dependency>
+  <groupId>com.webianks.library</groupId>
+  <artifactId>popup-bubble</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 
