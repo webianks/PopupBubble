@@ -27,3 +27,6 @@ compile 'com.webianks.library:popup-bubble:1.0.0'
         android:layout_height="wrap_content"
         />
 ```
+Postioning of this view can be done according to the need.<br>
+By default it should be placed in top center.<br>
+Should be placed below recyclerview in layout so that it shows on top of recyclerview.
