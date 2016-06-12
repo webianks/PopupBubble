@@ -104,6 +104,12 @@ Set false if you dont want any animations. Default value is true.
 ```java
 popupBubble.withAnimation(false);
 ```
+**Update text dynamically**
+Call this method before the activate method to set the new text.
+```java
+popupBubble.updateText("10 new stories");
+```
+
 #Most Important
 Now <b>download/fetch new content</b> in background and then notify your recyclerview adapter about range of items added and finally <b>activate the PopupBubble</b> to make it appear with animation (if not set false).
 ```java
