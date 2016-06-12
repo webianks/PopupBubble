@@ -94,7 +94,7 @@ popupBubble.setPopupBubbleListener(new PopupBubble.PopupBubbleClickListener() {
 popupBubble.setRecyclerView(recyclerView);
 ```
 #Helper Methods
-Hide/Show PopupBubble according to your need
+**Hide/Show** PopupBubble according to your need
 ```java
 popupBubble.hide();
 popupBubble.show();
