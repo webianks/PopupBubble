@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     list.add(0,dataClass);
                 }
                 contentAdapter.notifyItemRangeInserted(0,10);
+                popupBubble.updateText("10 new stories");
                 popupBubble.activate();
 
             }

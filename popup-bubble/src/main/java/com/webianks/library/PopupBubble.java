@@ -337,4 +337,11 @@ public class PopupBubble extends RelativeLayout {
         this.animation = animation;
     }
 
+    public void updateText(String text){
+
+        this.TEXT = text;
+        this.textView.setText(this.TEXT);
+
+    }
+
 }
