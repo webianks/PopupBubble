@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/badge/Android%20Arsenal-PopupBubble-green.svg?style=true)](https://android-arsenal.com/details/1/411">
+
 # PopupBubble
 Easily Add  "New Post" popup button with the feeds (recyclerview) of your app.
 
