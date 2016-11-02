@@ -220,26 +220,9 @@ public class PopupBubble extends RelativeLayout {
         sd.getPaint().setColor(Color.parseColor(BACKGROUND_COLOR));
 
 
-        ShapeDrawable sds = new ShapeDrawable(rect);
-        sds.setShaderFactory(new ShapeDrawable.ShaderFactory() {
+  
 
-            @Override
-            public Shader resize(int width, int height) {
-                LinearGradient lg = new LinearGradient(0, 0, 0, height,
-                        new int[]{Color.parseColor("#dddddd"),
-                                Color.parseColor("#dddddd"),
-                                Color.parseColor("#dddddd"),
-                                Color.parseColor("#dddddd")}, new float[]{0,
-                        0.50f, 0.50f, 1}, Shader.TileMode.REPEAT);
-                return lg;
-            }
-        });
-
-        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{sds, sd});
-        layerDrawable.setLayerInset(0, 5, 5, 0, 0); // inset the shadow so it doesn't start right at the left/top
-        layerDrawable.setLayerInset(1, 0, 0, 5, 5); //
-
-        this.setBackgroundDrawable(layerDrawable);
+        this.setBackgroundDrawable(sd);
 
 
     }
