@@ -327,4 +327,10 @@ public class PopupBubble extends RelativeLayout {
 
     }
 
+    public void updateIcon(Drawable icon){
+        this.SHOW_ICON = true;
+        this.ICON_DRAWABLE=icon;
+        if (ICON_DRAWABLE != null)
+            imageView.setImageDrawable(ICON_DRAWABLE);
+    }
 }
