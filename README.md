@@ -112,6 +112,12 @@ Call this method before the activate method to set the new text.
 popupBubble.updateText("10 new stories");
 ```
 
+**Update icon dynamically**
+Call this method before the activate method to set the new Icon.
+```java
+popupBubble.updateIcon(R.drawable.new_icon);
+```
+
 #Most Important
 Now <b>download/fetch new content</b> in background and then notify your recyclerview adapter about range of items added and finally <b>activate the PopupBubble</b> to make it appear with animation (if not set false).
 ```java
