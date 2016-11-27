@@ -3,13 +3,12 @@ package com.webianks.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.PorterDuff;
-import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -49,19 +48,16 @@ public class PopupBubble extends RelativeLayout {
     private Drawable ICON_DRAWABLE;
 
     private PopupBubbleClickListener mListener;
-    private Context context;
     private boolean animation = true;
 
     //Java Inflation
     public PopupBubble(Context context) {
         super(context);
 
-        this.context = context;
         textView = new TextView(context);
         imageView = new ImageView(context);
 
-        init(context);
-
+        init();
     }
 
 
@@ -73,35 +69,10 @@ public class PopupBubble extends RelativeLayout {
         imageView = new ImageView(context);
 
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PopupBubble, 0, 0);
+        initAttributes(typedArray);
+        typedArray.recycle();
 
-        try {
-
-            String text = typedArray.getString(R.styleable.PopupBubble_text);
-            String text_color = typedArray.getString(R.styleable.PopupBubble_textColor);
-            String icon_color = typedArray.getString(R.styleable.PopupBubble_iconColor);
-            String background_color = typedArray.getString(R.styleable.PopupBubble_backgroundColor);
-            Drawable icon_drawable = typedArray.getDrawable(R.styleable.PopupBubble_setIcon);
-
-            if (text!=null)
-                TEXT = text;
-            if (text_color!=null)
-                TEXT_COLOR = text_color;
-            if (icon_color!=null)
-                ICON_COLOR = icon_color;
-            if (background_color!=null)
-                BACKGROUND_COLOR = background_color;
-            if (icon_drawable!=null)
-                ICON_DRAWABLE = icon_drawable;
-
-            SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_showIcon, true);
-
-            init(context);
-
-        } finally {
-            typedArray.recycle();
-        }
-
-
+        init();
     }
 
     //XMl Inflation
@@ -112,39 +83,42 @@ public class PopupBubble extends RelativeLayout {
         imageView = new ImageView(context, attrs, defStyleAttr);
 
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PopupBubble, 0, 0);
+        initAttributes(typedArray);
+        typedArray.recycle();
 
-        try {
-
-            String text = typedArray.getString(R.styleable.PopupBubble_text);
-            String text_color = typedArray.getString(R.styleable.PopupBubble_textColor);
-            String icon_color = typedArray.getString(R.styleable.PopupBubble_iconColor);
-            String background_color = typedArray.getString(R.styleable.PopupBubble_backgroundColor);
-            Drawable icon_drawable = typedArray.getDrawable(R.styleable.PopupBubble_setIcon);
-
-            if (text!=null)
-                TEXT = text;
-            if (text_color!=null)
-                TEXT_COLOR = text_color;
-            if (icon_color!=null)
-                ICON_COLOR = icon_color;
-            if (background_color!=null)
-                BACKGROUND_COLOR = background_color;
-            if (icon_drawable!=null)
-                ICON_DRAWABLE = icon_drawable;
-
-            SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_showIcon, true);
-
-        } finally {
-            typedArray.recycle();
-        }
-
-        init(context);
+        init();
     }
 
-    private void init(Context context) {
+    private void initAttributes(TypedArray typedArray) {
+
+        String text = typedArray.getString(R.styleable.PopupBubble_pb_text);
+        String text_color = typedArray.getString(R.styleable.PopupBubble_pb_textColor);
+        String icon_color = typedArray.getString(R.styleable.PopupBubble_pb_iconColor);
+        String background_color = typedArray.getString(R.styleable.PopupBubble_pb_backgroundColor);
+        Drawable icon_drawable = typedArray.getDrawable(R.styleable.PopupBubble_pb_icon);
+        String font=typedArray.getString(R.styleable.PopupBubble_pb_font);
+
+        if (text!=null)
+            TEXT = text;
+        if (text_color!=null)
+            TEXT_COLOR = text_color;
+        if (icon_color!=null)
+            ICON_COLOR = icon_color;
+        if (background_color!=null)
+            BACKGROUND_COLOR = background_color;
+        if (icon_drawable!=null)
+            ICON_DRAWABLE = icon_drawable;
+        if(font!=null)
+            textView.setTypeface(Typeface.createFromAsset(typedArray.getResources().getAssets(),font));
+
+        SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_pb_showIcon, true);
+
+    }
+
+    private void init() {
 
         //prepare background of the bubble
-        setRoundedBackground(context);
+        setRoundedBackground();
         //set the icon
         if (SHOW_ICON)
             addIcon();
@@ -164,7 +138,7 @@ public class PopupBubble extends RelativeLayout {
     private void moveToCenter() {
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, 0);
         this.setLayoutParams(layoutParams);
@@ -200,7 +174,7 @@ public class PopupBubble extends RelativeLayout {
         textView.setTextColor(Color.parseColor(TEXT_COLOR));
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
         layoutParams.addRule(RelativeLayout.RIGHT_OF, imageView.getId());
 
@@ -208,23 +182,21 @@ public class PopupBubble extends RelativeLayout {
 
     }
 
-    private void setRoundedBackground(Context context) {
+    private void setRoundedBackground() {
 
         RoundRectShape rect = new RoundRectShape(
-                new float[]{50, 50, 50, 50, 50, 50, 50, 50},
-                null,
-                null);
-
+            new float[]{50, 50, 50, 50, 50, 50, 50, 50},
+            null,
+            null);
 
         ShapeDrawable sd = new ShapeDrawable(rect);
         sd.getPaint().setColor(Color.parseColor(BACKGROUND_COLOR));
 
-
-  
-
-        this.setBackgroundDrawable(sd);
-
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            this.setBackground(sd);
+        } else {
+            this.setBackgroundDrawable(sd);
+        }
     }
 
 
@@ -292,12 +264,12 @@ public class PopupBubble extends RelativeLayout {
     public void show() {
 
 
-       if(animation) {
-           ShowHideAnimation showHideAnimation = new ShowHideAnimation();
-           showHideAnimation.animateIn(this);
-       }else{
-           this.setVisibility(VISIBLE);
-       }
+        if(animation) {
+            ShowHideAnimation showHideAnimation = new ShowHideAnimation();
+            showHideAnimation.animateIn(this);
+        }else{
+            this.setVisibility(VISIBLE);
+        }
 
     }
 
@@ -325,6 +297,18 @@ public class PopupBubble extends RelativeLayout {
         this.TEXT = text;
         this.textView.setText(this.TEXT);
 
+    }
+
+    public void updateTypeFace(Typeface font){
+        this.textView.setTypeface(font);
+    }
+
+    public void updateIcon(int iconRes){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            updateIcon(getResources().getDrawable(iconRes, getContext().getTheme()));
+        } else {
+            updateIcon(getResources().getDrawable(iconRes));
+        }
     }
 
     public void updateIcon(Drawable icon){
