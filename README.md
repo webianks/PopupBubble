@@ -46,17 +46,19 @@ If its inside RelativeLayout then
 #Customization Through XML
 ```xml
 <!--Change background Color-->
-    app:backgroundColor="?attr/colorPrimary"
+    app:pb_backgroundColor="?attr/colorPrimary"
 <!--Change text -->
-    app:text="New Stories"
+    app:pb_text="New Stories"
 <!--Change text color-->
-    app:textColor="#ffffff"
+    app:pb_textColor="#ffffff"
 <!--Show/Hide Icon inside the button. By default its true.-->
-    app:showIcon="false"
+    app:pb_showIcon="false"
 <!--Change icon color-->
-    app:iconColor="#ffffff"
+    app:pb_iconColor="#ffffff"
 <!--Set Different Icons-->
-    app:setIcon="@drawable/ic_new.png"
+    app:pb_setIcon="@drawable/ic_new.png"
+<!--Set different fonts-->
+    app:pb_font="iran_sans_mobile.ttf"
         
 ```
 **Example : Full Customization**
