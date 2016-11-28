@@ -56,7 +56,7 @@ If its inside RelativeLayout then
 <!--Change icon color-->
     app:pb_iconColor="#ffffff"
 <!--Set Different Icons-->
-    app:pb_setIcon="@drawable/ic_new.png"
+    app:pb_icon="@drawable/ic_new.png"
 <!--Set different fonts-->
     app:pb_font="iran_sans_mobile.ttf"
         
@@ -70,11 +70,12 @@ If its inside RelativeLayout then
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
   android:layout_centerHorizontal="true"
-  app:backgroundColor="?attr/colorPrimary"
-  app:iconColor="#ffffff"
-  app:text="New Stories"
-  app:textColor="#ffffff"
-  app:setIcon="@drawable/ic_keyboard_arrow_up_white_18dp"
+  app:pb_backgroundColor="?attr/colorPrimary"
+  app:pb_iconColor="#ffffff"
+  app:pb_text="New Stories"
+  app:pb_textColor="#ffffff"
+  app:pb_icon="@drawable/ic_keyboard_arrow_up_white_18dp"
+  app:pb_font="iran_sans_mobile.ttf"
 />
 
 ```
@@ -118,6 +119,12 @@ popupBubble.updateText("10 new stories");
 Call this method before the activate method to set the new Icon.
 ```java
 popupBubble.updateIcon(R.drawable.new_icon);
+```
+
+**Update typeface of text dynamically**
+Call this method before the activate method to set the new Typeface.
+```java
+popupBubble.updateTypeFace(myCustomTypeface);
 ```
 
 #Most Important
