@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:scrollbars="vertical"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"/>
+        android:scrollbars="vertical" />
 
 
-    <com.webianks.library.PopupBubble
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_margin="16dp"
+    <com.webianks.library.PopupBubble xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/popup_bubble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
         app:pb_backgroundColor="?attr/colorPrimary"
+        app:pb_icon="@drawable/ic_keyboard_arrow_up_white_18dp"
         app:pb_iconColor="#ffffff"
         app:pb_text="New Stories"
-        app:pb_textColor="#ffffff"
-        app:pb_icon="@drawable/ic_keyboard_arrow_up_white_18dp"
-        app:pb_font="iran_sans_mobile.ttf"
-        />
+        app:pb_textColor="#ffffff" />
+    <!-- app:pb_font="iran_sans_mobile.ttf"-->
 
 </RelativeLayout>
