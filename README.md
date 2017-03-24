@@ -6,10 +6,10 @@ Easily Add  "New Post" popup button with the feeds (recyclerview) of your app.
 <img src="http://www.webianks.com/popupbubble/2.png" align="left" height="700" width="400" >
 <img src="http://www.webianks.com/popupbubble/3.png" height="700" width="400" >
 
-#Min SDK
+# Min SDK
 Minimum sdk is 14 and support is limited to recyclerview for now.
 
-#Add With Gradle Dependency
+# Add With Gradle Dependency
 ```groovy
 compile 'com.webianks.library:popup-bubble:1.0.3'
 ```
@@ -22,7 +22,7 @@ compile 'com.webianks.library:popup-bubble:1.0.3'
   <type>pom</type>
 </dependency>
 ```
-#Add PopupBubble to layout
+# Add PopupBubble to layout
 ```xml
 <com.webianks.library.PopupBubble
   android:id="@+id/popup_bubble"
@@ -32,7 +32,7 @@ compile 'com.webianks.library:popup-bubble:1.0.3'
 ```
 Positioning of this view can be done according to the need. By default it should be placed in <b>top center</b>. Also it should be placed <b>below recyclerview</b> in layout so that it shows on top of recyclerview.
 
-#Example positioning
+# Example positioning
 If its inside RelativeLayout then
 ```xml
 <com.webianks.library.PopupBubble
@@ -43,7 +43,7 @@ If its inside RelativeLayout then
   android:layout_centerHorizontal="true"
 />
 ```
-#Customization Through XML
+# Customization Through XML
 ```xml
 <!--Change background Color-->
     app:pb_backgroundColor="?attr/colorPrimary"
@@ -127,7 +127,7 @@ Call this method before the activate method to set the new Typeface.
 popupBubble.updateTypeFace(myCustomTypeface);
 ```
 
-#Most Important
+# Most Important
 Now <b>download/fetch new content</b> in background and then notify your recyclerview adapter about range of items added and finally <b>activate the PopupBubble</b> to make it appear with animation (if not set false).
 ```java
 
@@ -138,7 +138,7 @@ popupBubble.activate();
     
 ```
 
-## License
+# License
 
 ```
 PopupBubble library for Android
