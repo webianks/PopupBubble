@@ -6,23 +6,23 @@ Easily Add  "New Post" popup button with the feeds (recyclerview) of your app.
 <img src="http://www.webianks.com/popupbubble/2.png" align="left" height="700" width="400" >
 <img src="http://www.webianks.com/popupbubble/3.png" height="700" width="400" >
 
-#Min SDK
+# Min SDK
 Minimum sdk is 14 and support is limited to recyclerview for now.
 
-#Add With Gradle Dependency
+# Add With Gradle Dependency
 ```groovy
-compile 'com.webianks.library:popup-bubble:1.0.2'
+compile 'com.webianks.library:popup-bubble:1.0.3'
 ```
 **Maven:**
 ```xml
 <dependency>
   <groupId>com.webianks.library</groupId>
   <artifactId>popup-bubble</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <type>pom</type>
 </dependency>
 ```
-#Add PopupBubble to layout
+# Add PopupBubble to layout
 ```xml
 <com.webianks.library.PopupBubble
   android:id="@+id/popup_bubble"
@@ -32,7 +32,7 @@ compile 'com.webianks.library:popup-bubble:1.0.2'
 ```
 Positioning of this view can be done according to the need. By default it should be placed in <b>top center</b>. Also it should be placed <b>below recyclerview</b> in layout so that it shows on top of recyclerview.
 
-#Example positioning
+# Example positioning
 If its inside RelativeLayout then
 ```xml
 <com.webianks.library.PopupBubble
@@ -43,20 +43,22 @@ If its inside RelativeLayout then
   android:layout_centerHorizontal="true"
 />
 ```
-#Customization Through XML
+# Customization Through XML
 ```xml
 <!--Change background Color-->
-    app:backgroundColor="?attr/colorPrimary"
+    app:pb_backgroundColor="?attr/colorPrimary"
 <!--Change text -->
-    app:text="New Stories"
+    app:pb_text="New Stories"
 <!--Change text color-->
-    app:textColor="#ffffff"
+    app:pb_textColor="#ffffff"
 <!--Show/Hide Icon inside the button. By default its true.-->
-    app:showIcon="false"
+    app:pb_showIcon="false"
 <!--Change icon color-->
-    app:iconColor="#ffffff"
+    app:pb_iconColor="#ffffff"
 <!--Set Different Icons-->
-    app:setIcon="@drawable/ic_new.png"
+    app:pb_icon="@drawable/ic_new.png"
+<!--Set different fonts-->
+    app:pb_font="iran_sans_mobile.ttf"
         
 ```
 **Example : Full Customization**
@@ -68,11 +70,12 @@ If its inside RelativeLayout then
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
   android:layout_centerHorizontal="true"
-  app:backgroundColor="?attr/colorPrimary"
-  app:iconColor="#ffffff"
-  app:text="New Stories"
-  app:textColor="#ffffff"
-  app:setIcon="@drawable/ic_keyboard_arrow_up_white_18dp"
+  app:pb_backgroundColor="?attr/colorPrimary"
+  app:pb_iconColor="#ffffff"
+  app:pb_text="New Stories"
+  app:pb_textColor="#ffffff"
+  app:pb_icon="@drawable/ic_keyboard_arrow_up_white_18dp"
+  app:pb_font="iran_sans_mobile.ttf"
 />
 
 ```
@@ -118,7 +121,13 @@ Call this method before the activate method to set the new Icon.
 popupBubble.updateIcon(R.drawable.new_icon);
 ```
 
-#Most Important
+**Update typeface of text dynamically**
+Call this method before the activate method to set the new Typeface.
+```java
+popupBubble.updateTypeFace(myCustomTypeface);
+```
+
+# Most Important
 Now <b>download/fetch new content</b> in background and then notify your recyclerview adapter about range of items added and finally <b>activate the PopupBubble</b> to make it appear with animation (if not set false).
 ```java
 
@@ -129,7 +138,7 @@ popupBubble.activate();
     
 ```
 
-## License
+# License
 
 ```
 PopupBubble library for Android
