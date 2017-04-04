@@ -1,5 +1,7 @@
 package com.webianks.library;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -96,20 +98,20 @@ public class PopupBubble extends RelativeLayout {
         String icon_color = typedArray.getString(R.styleable.PopupBubble_pb_iconColor);
         String background_color = typedArray.getString(R.styleable.PopupBubble_pb_backgroundColor);
         Drawable icon_drawable = typedArray.getDrawable(R.styleable.PopupBubble_pb_icon);
-        String font=typedArray.getString(R.styleable.PopupBubble_pb_font);
+        String font = typedArray.getString(R.styleable.PopupBubble_pb_font);
 
-        if (text!=null)
+        if (text != null)
             TEXT = text;
-        if (text_color!=null)
+        if (text_color != null)
             TEXT_COLOR = text_color;
-        if (icon_color!=null)
+        if (icon_color != null)
             ICON_COLOR = icon_color;
-        if (background_color!=null)
+        if (background_color != null)
             BACKGROUND_COLOR = background_color;
-        if (icon_drawable!=null)
+        if (icon_drawable != null)
             ICON_DRAWABLE = icon_drawable;
-        if(font!=null)
-            textView.setTypeface(Typeface.createFromAsset(typedArray.getResources().getAssets(),font));
+        if (font != null)
+            textView.setTypeface(Typeface.createFromAsset(typedArray.getResources().getAssets(), font));
 
         SHOW_ICON = typedArray.getBoolean(R.styleable.PopupBubble_pb_showIcon, true);
 
@@ -138,7 +140,7 @@ public class PopupBubble extends RelativeLayout {
     private void moveToCenter() {
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                RelativeLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, 0);
         this.setLayoutParams(layoutParams);
@@ -174,7 +176,7 @@ public class PopupBubble extends RelativeLayout {
         textView.setTextColor(Color.parseColor(TEXT_COLOR));
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                RelativeLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
         layoutParams.addRule(RelativeLayout.RIGHT_OF, imageView.getId());
 
@@ -185,9 +187,9 @@ public class PopupBubble extends RelativeLayout {
     private void setRoundedBackground() {
 
         RoundRectShape rect = new RoundRectShape(
-            new float[]{50, 50, 50, 50, 50, 50, 50, 50},
-            null,
-            null);
+                new float[]{50, 50, 50, 50, 50, 50, 50, 50},
+                null,
+                null);
 
         ShapeDrawable sd = new ShapeDrawable(rect);
         sd.getPaint().setColor(Color.parseColor(BACKGROUND_COLOR));
@@ -211,23 +213,25 @@ public class PopupBubble extends RelativeLayout {
                 mListener.bubbleClicked(getContext());
 
 
-
-                if(animation){
+                if (animation) {
 
                     if (recyclerView != null)
                         recyclerView.smoothScrollToPosition(0);
 
-                    ShowHideAnimation showHideAnimation=new ShowHideAnimation();
-                    showHideAnimation.animateOut(this);
-                }else{
+                    AnimationUtils.popout(this, 1000, new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                        }
+                    }).start();
+
+                } else {
 
                     this.removeAllViews();
-                    if (recyclerView != null){
+                    if (recyclerView != null) {
                         recyclerView.removeAllViews();
                     }
-
                 }
-
                 //deactivate();
 
             }
@@ -264,10 +268,11 @@ public class PopupBubble extends RelativeLayout {
     public void show() {
 
 
-        if(animation) {
-            ShowHideAnimation showHideAnimation = new ShowHideAnimation();
-            showHideAnimation.animateIn(this);
-        }else{
+        if (animation) {
+
+            AnimationUtils.popup(this, 1000).start();
+
+        } else {
             this.setVisibility(VISIBLE);
         }
 
@@ -288,22 +293,22 @@ public class PopupBubble extends RelativeLayout {
         this.recyclerView.removeOnScrollListener(null);
     }
 
-    public void withAnimation(boolean animation){
+    public void withAnimation(boolean animation) {
         this.animation = animation;
     }
 
-    public void updateText(String text){
+    public void updateText(String text) {
 
         this.TEXT = text;
         this.textView.setText(this.TEXT);
 
     }
 
-    public void updateTypeFace(Typeface font){
+    public void updateTypeFace(Typeface font) {
         this.textView.setTypeface(font);
     }
 
-    public void updateIcon(int iconRes){
+    public void updateIcon(int iconRes) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             updateIcon(getResources().getDrawable(iconRes, getContext().getTheme()));
         } else {
@@ -311,9 +316,9 @@ public class PopupBubble extends RelativeLayout {
         }
     }
 
-    public void updateIcon(Drawable icon){
+    public void updateIcon(Drawable icon) {
         this.SHOW_ICON = true;
-        this.ICON_DRAWABLE=icon;
+        this.ICON_DRAWABLE = icon;
         if (ICON_DRAWABLE != null)
             imageView.setImageDrawable(ICON_DRAWABLE);
     }
