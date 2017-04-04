@@ -5,9 +5,12 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.PorterDuff;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
@@ -191,14 +194,32 @@ public class PopupBubble extends RelativeLayout {
                 null,
                 null);
 
+
         ShapeDrawable sd = new ShapeDrawable(rect);
         sd.getPaint().setColor(Color.parseColor(BACKGROUND_COLOR));
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            this.setBackground(sd);
-        } else {
-            this.setBackgroundDrawable(sd);
-        }
+        ShapeDrawable sds = new ShapeDrawable(rect);
+        sds.setShaderFactory(new ShapeDrawable.ShaderFactory() {
+
+            @Override
+            public Shader resize(int width, int height) {
+
+                LinearGradient lg = new LinearGradient(0, 0, 0, height,
+                        new int[]{Color.parseColor("#DDDDDD"),
+                                Color.parseColor("#DDDDDD"),
+                                Color.parseColor("#DDDDDD"),
+                                Color.parseColor("#DDDDDD")}, new float[]{0,
+                        0.50f, 0.50f, 1}, Shader.TileMode.REPEAT);
+
+                return lg;
+            }
+        });
+
+        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{sds, sd});
+        layerDrawable.setLayerInset(0, 2, 2, 0, 0); // inset the shadow so it doesn't start right at the left/top
+        layerDrawable.setLayerInset(1, 0, 0, 2, 2);
+
+        this.setBackgroundDrawable(layerDrawable);
     }
 
 
@@ -267,15 +288,11 @@ public class PopupBubble extends RelativeLayout {
 
     public void show() {
 
-
         if (animation) {
-
             AnimationUtils.popup(this, 1000).start();
-
         } else {
             this.setVisibility(VISIBLE);
         }
-
     }
 
     public void activate() {

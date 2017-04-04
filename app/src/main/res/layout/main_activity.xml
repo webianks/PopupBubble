@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="16dp"
         app:pb_backgroundColor="?attr/colorPrimary"
-        app:pb_icon="@drawable/ic_keyboard_arrow_up_white_18dp"
+        app:pb_icon="@drawable/ic_arrow_upward_white_18dp"
         app:pb_iconColor="#ffffff"
         app:pb_text="New Stories"
         app:pb_textColor="#ffffff" />
