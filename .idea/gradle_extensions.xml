@@ -454,7 +454,7 @@
             <prop name="developerEmail">webianks@gmail.com</prop>
             <prop name="licenseName">The Apache Software License, Version 2.0</prop>
             <prop name="publishedGroupId">com.webianks.library</prop>
-            <prop name="libraryVersion">1.0.3</prop>
+            <prop name="libraryVersion">1.0.4</prop>
             <prop name="allLicenses" type="java.util.ArrayList">[Apache-2.0]</prop>
             <prop name="artifact">popup-bubble</prop>
             <prop name="developerId">webianks</prop>
