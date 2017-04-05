@@ -43,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
         popupBubble = (PopupBubble) findViewById(R.id.popup_bubble);
 
         popupBubble.setPopupBubbleListener(new PopupBubble.PopupBubbleClickListener() {
-
             @Override
             public void bubbleClicked(Context context) {
+
+                //adding content again.
+                addNewContent();
 
             }
         });
@@ -60,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addNewContent() {
-
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

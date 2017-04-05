@@ -38,30 +38,20 @@ public class RecyclerViewListener extends RecyclerView.OnScrollListener {
 
         if (dy >= 0) {
             // Scrolling up
-
-                if (popupBubble != null)
+            if (popupBubble != null)
                     popupBubble.setVisibility(View.VISIBLE);
-
         } else {
             // Scrolling down
-
-                if (popupBubble != null)
+            if (popupBubble != null)
                    popupBubble.setVisibility(View.INVISIBLE);
-
             if(isTopVisible(recyclerView))
-            {
                 popupBubble.deactivate();
-            }
         }
     }
 
     private boolean isTopVisible(RecyclerView recyclerView) {
-
         int position = ((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
-        if (position == 0)
-            return true;
-        else
-            return false;
+        return position == 0;
     }
 
     @Override
@@ -69,6 +59,7 @@ public class RecyclerViewListener extends RecyclerView.OnScrollListener {
         super.onScrollStateChanged(recyclerView, newState);
 
         switch (newState) {
+
             case RecyclerView.SCROLL_STATE_IDLE:
                 //System.out.println("The RecyclerView is not scrolling");
                 break;
@@ -78,8 +69,7 @@ public class RecyclerViewListener extends RecyclerView.OnScrollListener {
             case RecyclerView.SCROLL_STATE_SETTLING:
                 //System.out.println("Scroll Settling");
                 break;
-
         }
-
     }
+
 }

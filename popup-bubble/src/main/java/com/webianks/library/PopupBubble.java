@@ -54,6 +54,7 @@ public class PopupBubble extends RelativeLayout {
 
     private PopupBubbleClickListener mListener;
     private boolean animation = true;
+    private RecyclerViewListener recyclerViewListener;
 
     //Java Inflation
     public PopupBubble(Context context) {
@@ -159,9 +160,7 @@ public class PopupBubble extends RelativeLayout {
         else
             imageView.setImageResource(R.drawable.ic_arrow_upward_white_18dp);
 
-
         imageView.setPadding(35, 20, 15, 25);
-
         imageView.setColorFilter(Color.parseColor(ICON_COLOR), PorterDuff.Mode.SRC_ATOP);
 
         this.addView(imageView);
@@ -232,8 +231,6 @@ public class PopupBubble extends RelativeLayout {
             if (mListener != null) {
 
                 mListener.bubbleClicked(getContext());
-
-
                 if (animation) {
 
                     if (recyclerView != null)
@@ -248,7 +245,7 @@ public class PopupBubble extends RelativeLayout {
 
                 } else {
 
-                    this.removeAllViews();
+                    //this.removeAllViews();
                     if (recyclerView != null) {
                         recyclerView.removeAllViews();
                     }
@@ -296,18 +293,14 @@ public class PopupBubble extends RelativeLayout {
     }
 
     public void activate() {
-
         this.show();
-        this.recyclerView.addOnScrollListener(new RecyclerViewListener(this));
+        recyclerViewListener = new RecyclerViewListener(this);
+        this.recyclerView.addOnScrollListener(recyclerViewListener);
     }
 
-
     //to detach the popub bubble when it has clicked or user manually scrolls to top
-
     public void deactivate() {
-
-        this.removeAllViews();
-        this.recyclerView.removeOnScrollListener(null);
+        this.recyclerView.removeOnScrollListener(recyclerViewListener);
     }
 
     public void withAnimation(boolean animation) {
