@@ -13,7 +13,7 @@ ext {
     siteUrl = 'http://www.webianks.com/popupbubble'
     gitUrl = 'https://github.com/webianks/PopupBubble.git'
 
-    libraryVersion = '1.0.4'
+    libraryVersion = '1.0.5'
 
     developerId = 'webianks'
     developerName = 'Ramankit Singh'
@@ -31,8 +31,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 5
-        versionName "1.4"
+        versionCode 6
+        versionName "1.5"
     }
     buildTypes {
         release {
