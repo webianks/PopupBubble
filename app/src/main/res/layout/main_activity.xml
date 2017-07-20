@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
-
     <com.webianks.library.PopupBubble xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/popup_bubble"
         android:layout_width="wrap_content"
