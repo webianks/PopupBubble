@@ -1,17 +1,12 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PopupBubble-blue.svg?style=flat)](https://android-arsenal.com/details/1/4110)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](http://www.apache.org/licenses/LICENSE-2.0)
 [![License](https://img.shields.io/badge/License-Apache--2.0-brightgreen.svg)](https://github.com/webianks/PopupBubble/blob/master/LICENCE)
-
-
 # PopupBubble
 Easily Add  "New Post" popup button with the feeds (recyclerview) of your app.
-
 <img src="http://www.webianks.com/popupbubble/2.png" align="left" height="700" width="400" >
 <img src="http://www.webianks.com/popupbubble/3.png" height="700" width="400" >
-
 # Min SDK
 Minimum sdk is 14 and support is limited to recyclerview for now.
-
 # Add With Gradle Dependency
 ```groovy
 compile 'com.webianks.library:popup-bubble:1.0.5'
@@ -34,7 +29,6 @@ compile 'com.webianks.library:popup-bubble:1.0.5'
 />
 ```
 Positioning of this view can be done according to the need. By default it should be placed in <b>top center</b>. Also it should be placed <b>below recyclerview</b> in layout so that it shows on top of recyclerview.
-
 # Example positioning
 If its inside RelativeLayout then
 ```xml
@@ -140,9 +134,7 @@ adapter.notifyItemRangeInserted(0,size_of_new_items_added); // size_of_new_items
 popupBubble.activate(); 
     
 ```
-
 # License
-
 ```
 PopupBubble library for Android
 Copyright (c) 2016 Ramankit Singh (http://github.com/webianks).
