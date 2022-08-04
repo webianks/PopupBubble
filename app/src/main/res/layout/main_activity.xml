@@ -3,23 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
-    <com.webianks.library.PopupBubble xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.webianks.library.PopupBubble
         android:id="@+id/popup_bubble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
-        app:pb_backgroundColor="?attr/colorPrimary"
-        app:pb_icon="@drawable/ic_arrow_upward_white_18dp"
-        app:pb_iconColor="#ffffff"
-        app:pb_text="New Stories"
-        app:pb_textColor="#ffffff" />
-    <!-- app:pb_font="iran_sans_mobile.ttf"-->
+        android:layout_margin="16dp" />
 
 </RelativeLayout>

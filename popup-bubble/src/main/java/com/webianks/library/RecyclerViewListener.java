@@ -1,8 +1,9 @@
 package com.webianks.library;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /*
  * PopupBubble library for Android
@@ -23,12 +24,9 @@ import android.view.View;
 
 public class RecyclerViewListener extends RecyclerView.OnScrollListener {
 
-
     private PopupBubble popupBubble;
 
-
     public RecyclerViewListener(PopupBubble popupBubble) {
-
         this.popupBubble = popupBubble;
     }
 
@@ -71,5 +69,4 @@ public class RecyclerViewListener extends RecyclerView.OnScrollListener {
                 break;
         }
     }
-
 }
