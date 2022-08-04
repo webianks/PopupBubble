@@ -1,9 +1,3 @@
-package com.webianks.library;
-
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-
 /*
  * PopupBubble library for Android
  * Copyright (c) 2016 Ramankit Singh (http://github.com/webianks).
@@ -20,15 +14,18 @@ import android.view.View;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.nextcloud.ui.popupbubble;
+
+import android.view.View;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewListener extends RecyclerView.OnScrollListener {
 
-
     private PopupBubble popupBubble;
 
-
     public RecyclerViewListener(PopupBubble popupBubble) {
-
         this.popupBubble = popupBubble;
     }
 
@@ -71,5 +68,4 @@ public class RecyclerViewListener extends RecyclerView.OnScrollListener {
                 break;
         }
     }
-
 }
