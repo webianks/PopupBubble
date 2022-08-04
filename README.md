@@ -1,4 +1,4 @@
-[![Releases](https://img.shields.io/github/release/nextcloud/android.svg)](https://github.com/nextcloud/PopupBubble/releases/latest)
+[![Releases](https://img.shields.io/github/release/nextcloud/PopupBubble.svg)](https://github.com/nextcloud/PopupBubble/releases/latest)
 [![License](https://img.shields.io/badge/License-Apache--2.0-brightgreen.svg)](https://github.com/nextcloud/PopupBubble/blob/master/LICENCE)
 
 # PopupBubble
