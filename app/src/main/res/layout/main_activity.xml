@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
-    <com.webianks.library.PopupBubble
+    <com.nextcloud.ui.popupbubble.PopupBubble
         android:id="@+id/popup_bubble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

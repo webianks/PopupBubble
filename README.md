@@ -1,5 +1,5 @@
-[![Releases](https://img.shields.io/github/release/nextcloud/android.svg)](https://github.com/nextcloud/android/releases/latest)
-[![License](https://img.shields.io/badge/License-Apache--2.0-brightgreen.svg)](https://github.com/webianks/PopupBubble/blob/master/LICENCE)
+[![Releases](https://img.shields.io/github/release/nextcloud/android.svg)](https://github.com/nextcloud/PopupBubble/releases/latest)
+[![License](https://img.shields.io/badge/License-Apache--2.0-brightgreen.svg)](https://github.com/nextcloud/PopupBubble/blob/master/LICENCE)
 
 # PopupBubble
 
@@ -9,75 +9,25 @@ Easily Add  "New Post" popup button with the feeds (recyclerview) of your app.
 
 # Min SDK
 
-Minimum sdk is 14 and support is limited to recyclerview for now.
+Minimum sdk is 19 and support is limited to recyclerview for now.
 
 # Add With Gradle Dependency
 
 ```groovy
-compile 'com.github.nextcloud:PopupBubble:1.0.6'
+compile 'com.github.nextcloud:PopupBubble:2.0.0'
 ```
 
 # Add PopupBubble to layout
 
 ```xml
-<com.webianks.library.PopupBubble
+<com.nextcloud.ui.popupbubble.PopupBubble
   android:id="@+id/popup_bubble"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
 />
 ```
 
-Positioning of this view can be done according to the need. By default it should be placed in <b>top center</b>. Also it should be placed <b>below recyclerview</b> in layout so that it shows on top of recyclerview.
-
-# Example positioning
-
-If its inside RelativeLayout then
-
-```xml
-<com.webianks.library.PopupBubble
-  android:layout_margin="16dp"
-  android:id="@+id/popup_bubble"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:layout_centerHorizontal="true"
-/>
-```
-
-# Customization Through XML
-
-```xml
-<!--Change background Color-->
-    app:pb_backgroundColor="?attr/colorPrimary"
-<!--Change text -->
-    app:pb_text="New Stories"
-<!--Change text color-->
-    app:pb_textColor="#ffffff"
-<!--Show/Hide Icon inside the button. By default its true.-->
-    app:pb_showIcon="false"
-<!--Change icon color-->
-    app:pb_iconColor="#ffffff"
-<!--Set Different Icons-->
-    app:pb_icon="@drawable/ic_new.png"
-<!--Set different fonts-->
-    app:pb_font="iran_sans_mobile.ttf"     
-```
-**Example : Full Customization**
-```xml
-<com.webianks.library.PopupBubble
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:layout_margin="16dp"
-  android:id="@+id/popup_bubble"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:layout_centerHorizontal="true"
-  app:pb_backgroundColor="?attr/colorPrimary"
-  app:pb_iconColor="#ffffff"
-  app:pb_text="New Stories"
-  app:pb_textColor="#ffffff"
-  app:pb_icon="@drawable/ic_keyboard_arrow_up_white_18dp"
-  app:pb_font="iran_sans_mobile.ttf"
-/>
-```
+Positioning of this view can be done according to the need and is based on `MaterialButton`so all themeing/customization is applicable.
 
 #Access the bubble from Java
 
@@ -111,32 +61,25 @@ popupBubble.hide();
 popupBubble.show();
 ```
 
-**Control Animations**
-Set false if you dont want any animations. Default value is true.
-
-```java
-popupBubble.withAnimation(false);
-```
-
 **Update text dynamically**
 Call this method before the activate method to set the new text.
 
 ```java
-popupBubble.updateText("10 new stories");
+popupBubble.setText("10 new stories");
 ```
 
 **Update icon dynamically**
 Call this method before the activate method to set the new Icon.
 
 ```java
-popupBubble.updateIcon(R.drawable.new_icon);
+popupBubble.setIcon(R.drawable.new_icon);
 ```
 
 **Update typeface of text dynamically**
 Call this method before the activate method to set the new Typeface.
 
 ```java
-popupBubble.updateTypeFace(myCustomTypeface);
+popupBubble.setTypeFace(myCustomTypeface);
 ```
 
 # Most Important
@@ -155,6 +98,7 @@ popupBubble.activate();
 ```
 PopupBubble library for Android
 Copyright (c) 2016 Ramankit Singh (http://github.com/webianks).
+Copyright (c) 2022 Andy Scherzinger
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

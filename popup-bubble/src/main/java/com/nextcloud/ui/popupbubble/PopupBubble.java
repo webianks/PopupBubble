@@ -1,19 +1,7 @@
-package com.webianks.library;
-
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
-
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.button.MaterialButton;
-
 /*
  * PopupBubble library for Android
  * Copyright (c) 2016 Ramankit Singh (http://github.com/webianks).
+ * Copyright (c) 2022 Andy Scherzinger <info@andy-scherzinger.de>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +15,18 @@ import com.google.android.material.button.MaterialButton;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.nextcloud.ui.popupbubble;
+
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.button.MaterialButton;
 
 public class PopupBubble extends MaterialButton {
 

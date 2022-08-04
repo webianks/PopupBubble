@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.webianks.popupbubble">
+    package="com.nextcloud.ui.popupbubble">
 
     <application
         android:allowBackup="true"
@@ -20,6 +20,5 @@
         </activity>
 
     </application>
-
 
 </manifest>
