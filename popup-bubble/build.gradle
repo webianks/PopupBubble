@@ -1,4 +1,9 @@
+import com.github.spotbugs.snom.SpotBugsTask
+
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.spotbugs'
+apply plugin: 'io.gitlab.arturbosch.detekt'
+apply plugin: "org.jlleitschuh.gradle.ktlint"
 
 ext {
     bintrayRepo = 'maven'
@@ -34,16 +39,43 @@ android {
         versionCode 7
         versionName "2.0.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    check.dependsOn 'lint', 'ktlintCheck', 'detekt'
+
+    lint {
+        abortOnError false
+        disable 'MissingTranslation','PrivateResource'
+        htmlOutput file("$project.buildDir/reports/lint/lint.html")
+        htmlReport true
+    }
 }
 
 dependencies {
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0")
+
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.google.android.material:material:1.6.1'
+}
+
+tasks.named("detekt").configure {
+    reports {
+        html.required.set(true)
+        txt.required.set(true)
+        xml.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
+    }
+}
+
+detekt {
+    config = files("../detekt.yml")
+    input = files("src/")
 }
